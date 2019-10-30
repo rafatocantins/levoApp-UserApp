@@ -1,17 +1,21 @@
 import React, { useEffect } from 'react';
 import { StyleSheet, Text, View, ActivityIndicator } from 'react-native';
+import { useNavigation } from 'react-navigation-hooks'
 import firebase from 'firebase'
 
 export default function LoadingScreen() {
+  
+  const { navigate } = useNavigation()
 
   useEffect(() => this.checkIfLoggedIn());
 
   checkIfLoggedIn = () => {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        this.props.navigation.navigate('HomeScreen')
+        navigate('HomeScreen')
       }
-      this.props.navigation.navigate('LoginScreen')
+        console.log('its there')
+        navigate('LoginScreen')
     })
   }    
 

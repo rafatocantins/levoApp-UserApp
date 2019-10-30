@@ -1,9 +1,12 @@
 import React, { useState, Component } from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { useNavigation } from 'react-navigation-hooks'
 import * as Google from 'expo-google-app-auth';
 import firebase from 'firebase';
 
 export default function LoginScreen() {
+
+  const { navigate } = useNavigation();
 
   onSignIn = googleUser => {
     console.log('Google Auth Response', googleUser);
@@ -87,7 +90,7 @@ export default function LoginScreen() {
             <Image source={require('../assets/images/facebook-3-32.png')} />
             <Text style={styles.buttonText}>Log in with Facebook</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.buttonEmail} onPress={() => setIsAddModal(true)}>
+          <TouchableOpacity style={styles.buttonEmail} onPress={() => navigate('LoginEmail')}>
             <Image source={require('../assets/images/email-13-32.png')} />
             <Text style={styles.buttonText}>Log in with Email</Text>
           </TouchableOpacity>
