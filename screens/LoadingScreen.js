@@ -1,12 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, Text, View, ActivityIndicator } from 'react-native';
 import firebase from 'firebase'
 
-export default class LoadingScreen extends React.Component {
+export default function LoadingScreen() {
 
-  componentDidMount() {
-    this.checkIfLoggedIn();
-  }
+  useEffect(() => this.checkIfLoggedIn());
 
   checkIfLoggedIn = () => {
     firebase.auth().onAuthStateChanged(user => {
@@ -17,13 +15,11 @@ export default class LoadingScreen extends React.Component {
     })
   }    
 
-  render() {
     return (
       <View style={styles.container}>
         <ActivityIndicator size="large" color="#FFA500" />
       </View>
     )
-  }
 }
 
 const styles = StyleSheet.create({
