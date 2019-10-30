@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState, Component } from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { useNavigation } from 'react-navigation-hooks'
 import * as Google from 'expo-google-app-auth';
 import firebase from 'firebase';
 
-export default class LoginScreen extends React.Component {
+export default function LoginScreen() {
+
+  const { navigate } = useNavigation();
 
   onSignIn = googleUser => {
     console.log('Google Auth Response', googleUser);
@@ -73,7 +76,6 @@ export default class LoginScreen extends React.Component {
     }
     };
 
-  render() {
     return (
       <View style={styles.screen}>
         <View style={styles.top}>
@@ -88,10 +90,13 @@ export default class LoginScreen extends React.Component {
             <Image source={require('../assets/images/facebook-3-32.png')} />
             <Text style={styles.buttonText}>Log in with Facebook</Text>
           </TouchableOpacity>
+          <TouchableOpacity style={styles.buttonEmail} onPress={() => navigate('LoginEmail')}>
+            <Image source={require('../assets/images/email-13-32.png')} />
+            <Text style={styles.buttonText}>Log in with Email</Text>
+          </TouchableOpacity>
         </View>
       </View>
     )
-  }
 }
 
 const styles = StyleSheet.create({
@@ -115,6 +120,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: 300,
     backgroundColor: '#DB4437',
+    marginBottom: 10,
+    borderRadius: 5,
+    padding: 10
+  },
+  buttonEmail: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    width: 300,
+    backgroundColor: 'orange',
     marginBottom: 10,
     borderRadius: 5,
     padding: 10
