@@ -22,16 +22,25 @@ export default function App() {
 
 
 const AppSwitchNavigator = createStackNavigator({
-  LoadingScreen: LoadingScreen,
+  LoadingScreen: {
+    screen: LoadingScreen,
+    navigationOptions: () => ({
+      headerShown: false
+    })
+  },
   LoginScreen: {
     screen: LoginScreen,
     navigationOptions: () => ({
       headerShown: false
     })
   },
-  LoginEmail: LoginEmail,
   Register: Register,
-  HomeScreen: HomeScreen
+  HomeScreen:  {
+    screen: HomeScreen,
+    navigationOptions: () => ({
+      headerShown: false
+    })
+  },
 })
 
 const AppNavigator = createAppContainer(AppSwitchNavigator)
