@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, ActivityIndicator } from 'react-native';
 import { useNavigation } from 'react-navigation-hooks'
 import firebase from 'firebase'
 
-export default function LoadingScreen() {
+const LoadingScreen = () => {
   
   const { navigate } = useNavigation()
 
@@ -38,3 +38,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   });
+
+  export default LoadingScreen;

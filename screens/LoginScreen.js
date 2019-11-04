@@ -5,7 +5,7 @@ import * as Google from 'expo-google-app-auth';
 import firebase from 'firebase';
 import * as Facebook from 'expo-facebook';
 
-export default function LoginScreen() {
+const LoginScreen = () => {
 
   const { navigate } = useNavigation();
   const [email, setEmail] = useState('')
@@ -239,3 +239,5 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   }
   });
+
+  export default LoginScreen;

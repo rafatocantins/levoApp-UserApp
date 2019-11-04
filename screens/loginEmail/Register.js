@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, KeyboardAvoidingView } from 'react-native';
 
-export default function Register() {
+const Register = () => {
 
     const [ registerEmail, setRegisterEmail ] = useState('')
     const [ registerPassword, setRegisterPassword ] = useState('')
@@ -90,3 +90,5 @@ const styles = StyleSheet.create({
       fontSize: 20
       }
     }); 
+
+    export default Register;

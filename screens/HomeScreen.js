@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 // get user
 
-export default function HomeScreen() {
+const HomeScreen = () => {
     return (
         <View style={styles.container}>
         <Text>HomeScreen</Text> 
@@ -19,3 +19,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   });
+
+  export default HomeScreen;
