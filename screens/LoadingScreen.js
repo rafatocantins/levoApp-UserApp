@@ -12,12 +12,16 @@ export default function LoadingScreen() {
   checkIfLoggedIn = () => {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
+        console.log('im back')
         navigate('HomeScreen')
-      }
-        console.log('its there')
+      } else {
+        console.log('i am virtual')
         navigate('LoginScreen')
+      }
     })
   }    
+
+
 
     return (
       <View style={styles.container}>

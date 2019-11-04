@@ -9,10 +9,9 @@ export default function LoginEmail() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  handleLogin = () => {
+  handleLogin = async () => {
     // TODO: Firebase stuff...
-    console.log(email)
-    console.log(password)
+    console.log('my amazing')
   }
 
   return (
@@ -35,7 +34,7 @@ export default function LoginEmail() {
           value={password}
         />
       </View>
-      <TouchableOpacity style={styles.buttonLogin} onPress={this.handleLogin()}>
+      <TouchableOpacity style={styles.buttonLogin} onPress={() => this.handleLogin()}>
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
       <TouchableOpacity>
