@@ -13,7 +13,7 @@ const LoadingScreen = () => {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         console.log('im back')
-        navigate('HomeScreen')
+        navigate('WelcomeScreen')
       } else {
         console.log('i am virtual')
         navigate('LoginScreen')
