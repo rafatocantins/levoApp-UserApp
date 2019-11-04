@@ -3,10 +3,10 @@ import { StyleSheet, Text, View } from 'react-native';
 
 // get user
 
-const HomeScreen = () => {
+const DeliveryScreen = () => {
   return (
     <View style={styles.container}>
-    <Text>HomeScreen</Text> 
+    <Text>Delivery</Text> 
     </View>
   )
 }
@@ -20,4 +20,4 @@ const styles = StyleSheet.create({
   },
   });
 
-export default HomeScreen;
+export default DeliveryScreen;
