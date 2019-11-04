@@ -60,8 +60,8 @@ const AppTabNavigator = createBottomTabNavigator({
       marginTop: 5,
     },
     style: {
-      height: 60,
-      paddingTop: 10,
+      height: 70,
+      paddingTop: 15,
       borderTopColor: 'black',
       borderTopWidth: 1,
       marginHorizontal: 20,
