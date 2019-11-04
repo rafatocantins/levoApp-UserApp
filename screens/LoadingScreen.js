@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, ActivityIndicator } from 'react-native';
 import { useNavigation } from 'react-navigation-hooks'
 import firebase from 'firebase'
 
-export default function LoadingScreen() {
+const LoadingScreen = () => {
   
   const { navigate } = useNavigation()
 
@@ -13,7 +13,7 @@ export default function LoadingScreen() {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         console.log('im back')
-        navigate('HomeScreen')
+        navigate('WelcomeScreen')
       } else {
         console.log('i am virtual')
         navigate('LoginScreen')
@@ -38,3 +38,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   });
+
+  export default LoadingScreen;

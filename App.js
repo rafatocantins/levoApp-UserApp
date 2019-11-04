@@ -1,12 +1,13 @@
 import React from 'react';
 import { createAppContainer } from 'react-navigation';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createStackNavigator } from 'react-navigation-stack';
+import { StyleSheet, Text, View } from 'react-native';
 
 // Import Screens 
 import LoadingScreen from './screens/LoadingScreen'
 import LoginScreen from './screens/LoginScreen'
-import HomeScreen from './screens/HomeScreen'
-import LoginEmail from './screens/loginEmail/LoginEmail'
+import WelcomeScreen from './screens/WelcomeScreen'
 import Register from './screens/loginEmail/Register'
 
 // import firebase
@@ -14,9 +15,9 @@ import * as firebase from 'firebase';
 import { firebaseConfig } from './config';
 firebase.initializeApp(firebaseConfig);
 
-export default function App() {
+const App = () => {
   return (
-  <AppNavigator/>
+    <AppNavigator />
   );
 }
 
@@ -25,7 +26,7 @@ const AppSwitchNavigator = createStackNavigator({
   LoadingScreen: {
     screen: LoadingScreen,
     navigationOptions: () => ({
-      headerShown: false
+      headerShown: false,
     })
   },
   LoginScreen: {
@@ -34,13 +35,21 @@ const AppSwitchNavigator = createStackNavigator({
       headerShown: false
     })
   },
-  Register: Register,
-  HomeScreen:  {
-    screen: HomeScreen,
+  Register: {
+    screen: Register,
     navigationOptions: () => ({
       headerShown: false
     })
   },
+  WelcomeScreen: {
+    screen: WelcomeScreen,
+    navigationOptions: () => ({
+      headerShown: false
+    })
+  }
 })
 
+
 const AppNavigator = createAppContainer(AppSwitchNavigator)
+
+export default App;
