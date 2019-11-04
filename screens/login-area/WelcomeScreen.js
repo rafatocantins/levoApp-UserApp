@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createAppContainer } from 'react-navigation';
 
-import HomeScreen from '../screens/HomeScreen'
+import HomeScreen from '../main/HomeScreen'
 
 const WelcomeScreen = () => {
     return (
