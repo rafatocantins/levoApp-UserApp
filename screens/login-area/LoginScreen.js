@@ -121,11 +121,11 @@ const LoginScreen = () => {
   return (
     <KeyboardAvoidingView style={styles.screen} behavior="padding" enabled>
       <View style={styles.top}>
-        <Image style={styles.image} source={require('../assets/images/logo.png')} />
+        <Image style={styles.image} source={require('../../assets/images/logo.png')} />
       </View>
       <View style={styles.bottom}>
         {/* <TouchableOpacity style={styles.buttonGoogle} onPress={() => this.signInWithGoogleAsync()}>
-          <Image source={require('../assets/images/google-plus-3-32.png')} />
+          <Image source={require('../../assets/images/google-plus-3-32.png')} />
           <Text style={styles.buttonText}>Log in with Google</Text>
         </TouchableOpacity> */}
         <View style={styles.inputView}>
@@ -146,11 +146,11 @@ const LoginScreen = () => {
           />
         </View>
         <TouchableOpacity style={styles.buttonEmail} onPress={() => navigate('LoginEmail')}>
-          <Image source={require('../assets/images/email-13-32.png')} />
+          <Image source={require('../../assets/images/email-13-32.png')} />
           <Text style={styles.buttonText}>Sign in with Email</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.buttonFacebook} onPress={() => this.signInWithFacebook()}>
-          <Image source={require('../assets/images/facebook-3-32.png')} />
+          <Image source={require('../../assets/images/facebook-3-32.png')} />
           <Text style={styles.buttonText}>Sign in with Facebook</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.forgot}>
