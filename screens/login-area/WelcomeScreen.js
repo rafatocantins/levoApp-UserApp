@@ -6,14 +6,14 @@ import { createAppContainer } from 'react-navigation';
 import HomeScreen from '../main/HomeScreen'
 
 const WelcomeScreen = () => {
-    return (
-      <HomeNavigator />
-    )
+  return (
+    <HomeNavigator />
+  )
 }
 
 const AppTabNavigator = createBottomTabNavigator({
   HomeScreen: {
-    screen: HomeScreen
+  screen: HomeScreen
   }
 })
 

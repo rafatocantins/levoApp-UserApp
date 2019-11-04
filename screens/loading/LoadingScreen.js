@@ -10,33 +10,33 @@ const LoadingScreen = () => {
   useEffect(() => this.checkIfLoggedIn());
 
   checkIfLoggedIn = () => {
-    firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-        console.log('im back')
-        navigate('WelcomeScreen')
-      } else {
-        console.log('i am virtual')
-        navigate('LoginScreen')
-      }
-    })
+  firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+    console.log('im back')
+    navigate('WelcomeScreen')
+    } else {
+    console.log('i am virtual')
+    navigate('LoginScreen')
+    }
+  })
   }    
 
 
 
-    return (
-      <View style={styles.container}>
-        <ActivityIndicator size="large" color="#FFA500" />
-      </View>
-    )
+  return (
+    <View style={styles.container}>
+    <ActivityIndicator size="large" color="#FFA500" />
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  flex: 1,
+  backgroundColor: '#fff',
+  alignItems: 'center',
+  justifyContent: 'center',
   },
   });
 
-  export default LoadingScreen;
+export default LoadingScreen;

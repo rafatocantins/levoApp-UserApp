@@ -17,35 +17,35 @@ firebase.initializeApp(firebaseConfig);
 
 const App = () => {
   return (
-    <AppNavigator />
+  <AppNavigator />
   );
 }
 
 
 const AppSwitchNavigator = createStackNavigator({
   LoadingScreen: {
-    screen: LoadingScreen,
-    navigationOptions: () => ({
-      headerShown: false,
-    })
+  screen: LoadingScreen,
+  navigationOptions: () => ({
+    headerShown: false,
+  })
   },
   LoginScreen: {
-    screen: LoginScreen,
-    navigationOptions: () => ({
-      headerShown: false
-    })
+  screen: LoginScreen,
+  navigationOptions: () => ({
+    headerShown: false
+  })
   },
   Register: {
-    screen: Register,
-    navigationOptions: () => ({
-      headerShown: false
-    })
+  screen: Register,
+  navigationOptions: () => ({
+    headerShown: false
+  })
   },
   WelcomeScreen: {
-    screen: WelcomeScreen,
-    navigationOptions: () => ({
-      headerShown: false
-    })
+  screen: WelcomeScreen,
+  navigationOptions: () => ({
+    headerShown: false
+  })
   }
 })
 
