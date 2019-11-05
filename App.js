@@ -10,10 +10,6 @@ import LoginScreen from './screens/login-area/LoginScreen'
 import WelcomeScreen from './screens/login-area/WelcomeScreen'
 import Register from './screens/login-area/Register'
 
-// import firebase
-import * as firebase from 'firebase';
-import { firebaseConfig } from './config';
-firebase.initializeApp(firebaseConfig);
 
 const App = () => {
   return (

@@ -1,26 +1,29 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, ActivityIndicator } from 'react-native';
 import { useNavigation } from 'react-navigation-hooks'
-import firebase from 'firebase'
+import config from '../../config'
 
 const LoadingScreen = () => {
   
   const { navigate } = useNavigation()
+  const [firebaseInitialized, setFirebaseInitialized] = useState(null)
 
-  useEffect(() => this.checkIfLoggedIn());
+  useEffect(() => {
+    config.isInitialized().then(val => {
+      setFirebaseInitialized(val)
+    })
+    this.initializeScreens()
+  });    
 
-  checkIfLoggedIn = () => {
-  firebase.auth().onAuthStateChanged(user => {
-    if (user) {
-    console.log('im back')
-    navigate('WelcomeScreen')
+  initializeScreens = () => {
+    if (firebaseInitialized != null) {
+      console.log('user is available')
+      navigate('WelcomeScreen')
     } else {
-    console.log('i am virtual')
-    navigate('LoginScreen')
+      console.log('user is not available')
+      navigate('LoginScreen')
     }
-  })
-  }    
-
+  }
 
 
   return (

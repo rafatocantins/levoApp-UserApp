@@ -2,8 +2,8 @@ import React, { useState, useEffect, createContext, useContext } from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity, TextInput, KeyboardAvoidingView } from 'react-native';
 import { useNavigation } from 'react-navigation-hooks'
 import * as Google from 'expo-google-app-auth';
-import firebase from 'firebase';
-import * as Facebook from 'expo-facebook';
+import config from '../../config';
+
 
 const LoginScreen = () => {
 
@@ -14,41 +14,19 @@ const LoginScreen = () => {
 
   // use Effect
 
-  useEffect(() => this.checkIfUser());
+  useEffect(() => config.checkIfUser());
 
 
-  // Facebook Login
-  signInWithFacebook = async () => {
-    const appId = '545047676329983';
-    const permissions = [ 'public_profile', 'email' ];
+ // facebook Login
 
-    const {
-      type,
-      token
-    } = await Facebook.logInWithReadPermissionsAsync(
-      appId,
-      {permissions}
-    );
-
-    if (type == "success") {
-      const credential = firebase.auth.FacebookAuthProvider.credential(token);
-      firebase.auth().signInWithCredential(credential).then(function(){
-        console.log('Loading')
-      }).catch(error => {
-        console.log(error);
-      })
-    }
+ loginWithFacebook = async () => {
+   try {
+     await config.signInWithFacebook()
+   } catch(error) {
+      console.log(error.message)
+   }
+ }
  
-  }
-
-  checkIfUser = () => {
-    firebase.auth().onAuthStateChanged(user => {
-      if (user != null) {
-        console.log('this is my', user)
-      }
-    })
-  }
-
   // Google Login
 
   // onSignIn = googleUser => {
@@ -150,7 +128,7 @@ const LoginScreen = () => {
           <Image source={require('../../assets/images/email-13-32.png')} />
           <Text style={styles.buttonText}>Sign in with Email</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonFacebook} onPress={() => this.signInWithFacebook()}>
+        <TouchableOpacity style={styles.buttonFacebook} onPress={() => this.loginWithFacebook()}>
           <Image source={require('../../assets/images/facebook-3-32.png')} />
           <Text style={styles.buttonText}>Sign in with Facebook</Text>
         </TouchableOpacity>
