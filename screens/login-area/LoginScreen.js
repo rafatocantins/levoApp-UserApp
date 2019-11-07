@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, createContext, useContext } from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity, TextInput, KeyboardAvoidingView } from 'react-native';
 import { useNavigation } from 'react-navigation-hooks'
 import * as Google from 'expo-google-app-auth';
@@ -15,37 +15,36 @@ const LoginScreen = () => {
 
   useEffect(() => this.checkIfUser());
 
-
   // Facebook Login
   signInWithFacebook = async () => {
-  const appId = '545047676329983';
-  const permissions = [ 'public_profile', 'email' ];
+    const appId = '545047676329983';
+    const permissions = [ 'public_profile', 'email' ];
 
-  const {
-    type,
-    token
-  } = await Facebook.logInWithReadPermissionsAsync(
-    appId,
-    {permissions}
-  );
+    const {
+      type,
+      token
+    } = await Facebook.logInWithReadPermissionsAsync(
+      appId,
+      {permissions}
+    );
 
-  if (type == "success") {
-    const credential = firebase.auth.FacebookAuthProvider.credential(token);
-    firebase.auth().signInWithCredential(credential).then(function(){
-    console.log('Loading')
-    }).catch(error => {
-    console.log(error);
-    })
-  }
+    if (type == "success") {
+      const credential = firebase.auth.FacebookAuthProvider.credential(token);
+      firebase.auth().signInWithCredential(credential).then(function(){
+        console.log('Loading')
+      }).catch(error => {
+        console.log(error);
+      })
+    }
  
   }
 
   checkIfUser = () => {
-  firebase.auth().onAuthStateChanged(user => {
-    if (user != null) {
-    console.log('this is my', user)
-    }
-  })
+    firebase.auth().onAuthStateChanged(user => {
+      if (user != null) {
+        console.log('this is my', user)
+      }
+    })
   }
 
   // Google Login
@@ -119,51 +118,51 @@ const LoginScreen = () => {
   // };
 
   return (
-  <KeyboardAvoidingView style={styles.screen} behavior="padding" enabled>
-    <View style={styles.top}>
-    <Image style={styles.image} source={require('../../assets/images/logo.png')} />
-    </View>
-    <View style={styles.bottom}>
-    {/* <TouchableOpacity style={styles.buttonGoogle} onPress={() => this.signInWithGoogleAsync()}>
-      <Image source={require('../../assets/images/google-plus-3-32.png')} />
-      <Text style={styles.buttonText}>Log in with Google</Text>
-    </TouchableOpacity> */}
-    <View style={styles.inputView}>
-      <TextInput
-      style={styles.textInput}
-      autoCapitalize="none"
-      placeholder="Email"
-      onChangeText={(text) => setEmail(text)}
-      value={email}
-      />
-      <TextInput
-      secureTextEntry
-      style={styles.textInput}
-      autoCapitalize="none"
-      placeholder="Password"
-      onChangeText={(text) => setPassword(text)}
-      value={password}
-      />
-    </View>
-    <TouchableOpacity style={styles.buttonEmail} onPress={() => navigate('LoginEmail')}>
-      <Image source={require('../../assets/images/email-13-32.png')} />
-      <Text style={styles.buttonText}>Sign in with Email</Text>
-    </TouchableOpacity>
-    <TouchableOpacity style={styles.buttonFacebook} onPress={() => this.signInWithFacebook()}>
-      <Image source={require('../../assets/images/facebook-3-32.png')} />
-      <Text style={styles.buttonText}>Sign in with Facebook</Text>
-    </TouchableOpacity>
-    <TouchableOpacity style={styles.forgot}>
-      <Text>Forgot Password</Text>
-    </TouchableOpacity>
-    <View style={styles.register}>
-      <Text style={styles.forgot}>Do not have an account?</Text>
-      <TouchableOpacity onPress={() => navigate('Register')}>
-      <Text>Register</Text>
-      </TouchableOpacity>
-    </View>
-    </View>
-  </KeyboardAvoidingView>
+    <KeyboardAvoidingView style={styles.screen} behavior="padding" enabled>
+      <View style={styles.top}>
+        <Image style={styles.image} source={require('../../assets/images/logo.png')} />
+      </View>
+      <View style={styles.bottom}>
+        {/* <TouchableOpacity style={styles.buttonGoogle} onPress={() => this.signInWithGoogleAsync()}>
+          <Image source={require('../../assets/images/google-plus-3-32.png')} />
+          <Text style={styles.buttonText}>Log in with Google</Text>
+        </TouchableOpacity> */}
+        <View style={styles.inputView}>
+          <TextInput
+            style={styles.textInput}
+            autoCapitalize="none"
+            placeholder="Email"
+            onChangeText={(text) => setEmail(text)}
+            value={email}
+          />
+          <TextInput
+            secureTextEntry
+            style={styles.textInput}
+            autoCapitalize="none"
+            placeholder="Password"
+            onChangeText={(text) => setPassword(text)}
+            value={password}
+          />
+        </View>
+        <TouchableOpacity style={styles.buttonEmail} onPress={() => navigate('LoginEmail')}>
+          <Image source={require('../../assets/images/email-13-32.png')} />
+          <Text style={styles.buttonText}>Sign in with Email</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.buttonFacebook} onPress={() => this.signInWithFacebook()}>
+          <Image source={require('../../assets/images/facebook-3-32.png')} />
+          <Text style={styles.buttonText}>Sign in with Facebook</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.forgot}>
+          <Text>Forgot Password</Text>
+        </TouchableOpacity>
+        <View style={styles.register}>
+          <Text style={styles.forgot}>Do not have an account?</Text>
+          <TouchableOpacity onPress={() => navigate('Register')}>
+            <Text>Register</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </KeyboardAvoidingView>
   )
 }
 
@@ -236,7 +235,7 @@ const styles = StyleSheet.create({
   fontSize: 20,
   },
   forgot: {
-  alignItems: 'center'
+    alignItems: 'center'
   }
   });
 
